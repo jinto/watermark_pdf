@@ -1,6 +1,6 @@
 /**
 * Watermark in text
-* requires itextpdf-5.4.3.jar
+* requires itextpdf-5.5.4.jar
 * @author jaypark@gmail.com 2014.12.24 (yes it's christmas)
 */
 import java.io.FileOutputStream;
@@ -19,10 +19,14 @@ import com.itextpdf.text.pdf.ColumnText;
 
 
 public class watermark {
-  static String FONTFILE = "./NanumGothic.ttf";
-  static String LIC = "이 문서는 %s님께 사용이 허가된 문서입니다.";
-  //static String FONTFILE = "./times.ttf";
-  //static String LIC = "This document is licensed to %s.";
+  // for korean
+  //static String FONTFILE = "./NanumGothic.ttf";   // korean font
+  //static String LIC = "이 문서는 %s님께 사용이 허가된 문서입니다."; 
+
+  // for english
+  static String FONTFILE = "./times.ttf";
+  static String LIC = "This document is licensed to %s.";
+
   static BaseColor TCOLOR = new BaseColor(110, 110, 110);
 
   public static void main(String[] args) {
