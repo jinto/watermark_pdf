@@ -19,21 +19,22 @@ import com.itextpdf.text.pdf.ColumnText;
 
 
 public class watermark {
-  //static String FONTFILE = "./NanumGothic.ttf";
-  //static String LIC = "이 문서는 %s님께 사용이 허가된 문서입니다.";
-  static String FONTFILE = "./times.ttf";
-  static String LIC = "This document is licensed to %s.";
+  static String FONTFILE = "./NanumGothic.ttf";
+  static String LIC = "이 문서는 %s님께 사용이 허가된 문서입니다.";
+  //static String FONTFILE = "./times.ttf";
+  //static String LIC = "This document is licensed to %s.";
+  static BaseColor TCOLOR = new BaseColor(110, 110, 110);
 
   public static void main(String[] args) {
     try {
       PdfReader reader = new PdfReader(args[0]);
       PdfStamper stamp = new PdfStamper(reader, new FileOutputStream(args[1]));
-      stamp.getWriter().setCompressionLevel(9);
+      stamp.getWriter().setCompressionLevel(9); // without this code it'll 3 times bigger
 
       String lic = String.format(LIC, args[2]);
 
       BaseFont bf = BaseFont.createFont(FONTFILE, BaseFont.IDENTITY_H , BaseFont.EMBEDDED);
-      Chunk c = new Chunk(lic, new Font(bf, 7, Font.NORMAL,new BaseColor(110, 110, 110)));
+      Chunk c = new Chunk(lic, new Font(bf, 7, Font.NORMAL, TCOLOR));
       c.setTextRenderMode(PdfContentByte.TEXT_RENDER_MODE_FILL_STROKE, 1/800f, null);
 
       Phrase phrase = new Phrase(c);
@@ -47,7 +48,8 @@ public class watermark {
         PdfContentByte under = stamp.getUnderContent(i); 
         ColumnText.showTextAligned(under, Element.ALIGN_LEFT, phrase, xpos, 15, -0);
       } 
-      stamp.setFullCompression();
+
+      stamp.setFullCompression();   // without this code it'll 3 times bigger
       stamp.close();
     }
     catch (Exception e) {
