@@ -6,12 +6,11 @@ little code for watermarking on the pdf file, with text.
 
 Compile
 =======
-javac -cp itextpdf-5.5.4.jar watermark.java
+javac -cp itextpdf-5.5.13.jar watermark.java
 
 Usage
 ====
-java -cp itextpdf-5.5.4.jar:./ watermark source.pdf target.pdf "licensed user"
-
+java -cp itextpdf-5.5.13.jar:./ watermark source.pdf target.pdf bottommargin "licensed user"
 
 Fonts
 =====

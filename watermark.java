@@ -45,10 +45,10 @@ public class watermark {
       Phrase phrase = new Phrase(c);
 
       int pages = reader.getNumberOfPages();
-      int xpos = 90;
+      int xpos = 120;
       for (int i = 1; i <= pages; i++) { 
         if(i %2==0)	xpos = 160;
-        else 				xpos = 90;
+        else 	    xpos = 120;
 
         PdfContentByte under = stamp.getUnderContent(i); 
         ColumnText.showTextAligned(under, Element.ALIGN_LEFT, phrase, xpos, bottom_margin, -0);
