@@ -47,8 +47,8 @@ public class watermark {
       int pages = reader.getNumberOfPages();
       int xpos = 120;
       for (int i = 1; i <= pages; i++) { 
-        if(i %2==0)	xpos = 160;
-        else 	    xpos = 120;
+        if(i %2==0)
+          xpos = 160;
 
         PdfContentByte under = stamp.getUnderContent(i); 
         ColumnText.showTextAligned(under, Element.ALIGN_LEFT, phrase, xpos, bottom_margin, -0);
